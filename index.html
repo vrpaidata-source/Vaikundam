@@ -3,14 +3,15 @@
 <html lang="ta">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#120801">
 
 <title>வைகுண்ட ஏகாதசி 2026 | VRPAIData</title>
 
 <meta property="og:title" content="இனிய வைகுண்ட ஏகாதசி நல்வாழ்த்துக்கள்">
-<meta property="og:description" content="ஓம் நமோ நாராயணாய">
+<meta property="og:description" content="ஓம் நமோ நாராயணாய. வைகுண்ட நாதனை தரிசியுங்கள்.">
 <meta property="og:image" content="og-vaikunta.jpg">
+<meta property="og:type" content="website">
 
 <style>
 * {
@@ -19,38 +20,53 @@
   box-sizing:border-box;
 }
 
+html, body {
+  width:100%;
+  height:100%;
+  overflow:hidden;
+}
+
 body {
   background:#100802;
   color:#ffe7a1;
   font-family:Arial,sans-serif;
   text-align:center;
-  overflow-x:hidden;
 }
 
 .page {
-  min-height:100vh;
-  padding:20px 14px 35px;
+  position:relative;
+  width:100%;
+  height:100vh;
+  height:100dvh;
+  overflow:hidden;
+  padding:env(safe-area-inset-top) 14px env(safe-area-inset-bottom);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
   background:radial-gradient(ellipse at center,#624016,#241204 55%,#090501);
 }
 
 .brand {
   color:#e8bd55;
-  letter-spacing:4px;
-  font-size:13px;
-  margin:12px;
+  letter-spacing:3px;
+  font-size:12px;
+  margin-top:5px;
+  flex-shrink:0;
 }
 
 h1 {
-  font-size:29px;
+  font-size:clamp(21px,5.5vw,29px);
   color:#ffd66b;
   text-shadow:0 0 15px #ffae27;
-  margin:15px 0;
+  margin:7px 0 4px;
+  flex-shrink:0;
 }
 
 .subtitle {
   color:#f5dca7;
-  font-size:16px;
-  line-height:1.8;
+  font-size:13px;
+  line-height:1.6;
+  flex-shrink:0;
 }
 
 .gold {
@@ -58,16 +74,17 @@ h1 {
   text-shadow:0 0 12px #ffb52d;
 }
 
-/* MUSIC */
+/* MUSIC BUTTON */
 
 #musicButton {
   position:fixed;
-  top:12px;
-  right:12px;
+  top:calc(env(safe-area-inset-top) + 9px);
+  right:10px;
   z-index:100;
-  padding:10px 15px;
-  font-size:13px;
+  padding:9px 13px;
+  font-size:12px;
   margin:0;
+  border-radius:25px;
 }
 
 /* GATE SCENE */
@@ -75,8 +92,10 @@ h1 {
 .gate-area {
   position:relative;
   width:min(100%,420px);
-  height:430px;
-  margin:25px auto;
+  height:min(53svh,430px);
+  min-height:250px;
+  flex-shrink:1;
+  margin:12px auto 5px;
   perspective:1200px;
   overflow:hidden;
   border:8px ridge #dba53e;
@@ -85,7 +104,7 @@ h1 {
   background:#160a03;
 }
 
-/* Background gateway image */
+/* INNER SCENE */
 
 .inner-scene {
   position:absolute;
@@ -102,7 +121,7 @@ h1 {
   transform:scale(2.3);
 }
 
-/* Light */
+/* LIGHT */
 
 .light {
   position:absolute;
@@ -123,7 +142,7 @@ h1 {
   opacity:1;
 }
 
-/* Doors */
+/* GOLDEN DOORS */
 
 .gates {
   position:absolute;
@@ -164,7 +183,7 @@ h1 {
   top:42%;
   left:50%;
   transform:translate(-50%,-50%);
-  font-size:55px;
+  font-size:clamp(40px,12vw,55px);
   color:#fff0a0;
   text-shadow:0 0 15px gold;
 }
@@ -190,9 +209,7 @@ h1 {
   align-items:center;
   opacity:0;
   transform:scale(.65);
-  transition:
-    opacity 5s ease,
-    transform 7s ease;
+  transition:opacity 5s ease,transform 7s ease;
   pointer-events:none;
 }
 
@@ -204,11 +221,12 @@ h1 {
 .god-scene img {
   width:100%;
   height:100%;
-  object-fit:contain;
+  object-fit:cover;
+  object-position:center;
   filter:drop-shadow(0 0 22px gold);
 }
 
-/* Divine light flash */
+/* DIVINE FLASH */
 
 .flash {
   position:absolute;
@@ -235,13 +253,14 @@ h1 {
   display:flex;
   justify-content:space-around;
   width:min(100%,420px);
-  margin:-20px auto 10px;
+  flex-shrink:0;
+  margin:0 auto 3px;
   position:relative;
   z-index:10;
 }
 
 .lamp {
-  font-size:32px;
+  font-size:clamp(23px,7vw,32px);
   filter:drop-shadow(0 0 12px orange);
   animation:flicker 1s infinite alternate;
 }
@@ -273,19 +292,45 @@ h1 {
   }
 }
 
+/* FLOWER RAIN */
+
+.flower {
+  position:fixed;
+  top:-35px;
+  z-index:30;
+  pointer-events:none;
+  font-size:23px;
+  opacity:0;
+  animation:flowerFall 4s ease-in forwards;
+  animation-delay:var(--delay);
+}
+
+@keyframes flowerFall {
+  0% {
+    opacity:0;
+    transform:translateY(0) rotate(0deg);
+  }
+  15% {opacity:1;}
+  100% {
+    opacity:1;
+    transform:translateY(var(--distance)) rotate(520deg);
+  }
+}
+
 /* BUTTONS */
 
 button {
   border:1px solid #ffe09a;
   border-radius:30px;
-  padding:14px 24px;
+  padding:13px 22px;
   background:linear-gradient(120deg,#8e510b,#e4ac42,#8a4c08);
   color:#fff8dc;
-  font-size:16px;
+  font-size:clamp(14px,4vw,17px);
   font-weight:bold;
-  margin:12px auto;
+  margin:7px auto;
   cursor:pointer;
   box-shadow:0 0 15px #b77a22;
+  flex-shrink:0;
 }
 
 button:active {
@@ -296,56 +341,165 @@ button:disabled {
   opacity:.5;
 }
 
-/* FORM */
+/* STATUS */
 
-input,textarea {
+#statusText {
+  font-size:13px;
+  line-height:1.5;
+  margin:4px 0;
+  min-height:20px;
+  flex-shrink:0;
+}
+
+/* SENDER FORM */
+
+.section {
+  width:min(100%,400px);
+  padding:16px 14px;
+  border:1px solid #a87527;
+  border-radius:18px;
+  background:rgba(40,20,5,.96);
+  box-shadow:0 0 20px #4e300f;
+}
+
+#formSection {
+  display:none;
+  position:absolute;
+  left:50%;
+  bottom:calc(env(safe-area-inset-bottom) + 12px);
+  transform:translateX(-50%);
+  z-index:45;
+}
+
+#formSection h2 {
+  font-size:20px;
+  margin-bottom:10px;
+}
+
+#formSection p {
+  font-size:14px;
+  margin-bottom:7px;
+}
+
+input {
   display:block;
   width:100%;
-  max-width:400px;
-  margin:12px auto;
-  padding:15px;
+  margin:9px auto;
+  padding:13px;
   border:1px solid #d9a947;
   border-radius:12px;
   background:#241507;
   color:#fff0c3;
   font-size:16px;
+  text-align:center;
 }
 
-.section {
-  max-width:430px;
-  margin:25px auto;
-  padding:22px 15px;
-  border:1px solid #a87527;
-  border-radius:18px;
-  background:rgba(40,20,5,.75);
-  box-shadow:0 0 20px #4e300f;
-}
-
-#formSection,#greeting {
-  display:none;
-}
+/* GREETING CARD */
 
 #greeting {
-  line-height:2;
+  display:none;
+  position:absolute;
+  z-index:50;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:min(90%,400px);
+  padding:23px 16px;
+  line-height:1.9;
+  border:2px solid #e6bb59;
+  border-radius:22px;
+  background:linear-gradient(145deg,#241204,#684016,#241204);
+  box-shadow:0 0 30px #d99d32;
 }
 
 .greeting-title {
-  font-size:26px;
+  font-size:22px;
   color:#ffda7d;
-  margin-bottom:15px;
+  margin-bottom:12px;
 }
 
 #senderDisplay {
-  font-size:22px;
+  font-size:21px;
   color:#ffcf56;
-  margin:15px;
+  margin:13px 0;
+}
+
+#wishDisplay {
+  font-size:15px;
+  overflow-wrap:anywhere;
+}
+
+#shareButtons {
+  margin-top:12px;
+}
+
+/* SHARED LINK WELCOME */
+
+#sharedWelcome {
+  display:none;
+  position:absolute;
+  inset:0;
+  z-index:80;
+  background:radial-gradient(ellipse at center,#68451b,#241204 60%,#090501);
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  padding:25px;
+}
+
+.shared-card {
+  width:100%;
+  max-width:400px;
+  padding:28px 17px;
+  border:2px solid #e6bb59;
+  border-radius:22px;
+  background:linear-gradient(145deg,#241204,#684016,#241204);
+  box-shadow:0 0 30px #d99d32;
+  line-height:2;
+}
+
+.shared-card h2 {
+  color:#ffda7d;
+  font-size:23px;
+  margin-bottom:15px;
+}
+
+.shared-card p {
+  overflow-wrap:anywhere;
+}
+
+.shared-name {
+  color:#ffcf56;
+  font-size:22px;
+  margin:14px 0;
 }
 
 footer {
-  font-size:12px;
+  font-size:10px;
   color:#d6b77a;
-  margin-top:30px;
-  letter-spacing:2px;
+  margin-top:auto;
+  padding:5px 0 7px;
+  letter-spacing:1px;
+  flex-shrink:0;
+}
+
+/* DARSHAN MODE */
+
+.page.darshan .subtitle {
+  display:none;
+}
+
+.page.darshan .gate-area {
+  height:min(48svh,390px);
+}
+
+.page.darshan .lamps,
+.page.darshan #openButton {
+  display:none;
+}
+
+.page.darshan footer {
+  display:none;
 }
 
 </style>
@@ -353,180 +507,219 @@ footer {
 
 <body>
 
-<!-- MANTRA MUSIC -->
-
-<audio id="mantra" src="mantra.mp3" loop autoplay></audio>
+<audio id="mantra" src="mantra.mp3" loop preload="auto"></audio>
 
 <button id="musicButton" onclick="toggleMusic()">
-🔊 இசை ON
+🔇 இசை OFF
 </button>
 
-<div class="page">
+<div class="page" id="mainPage">
 
-<div class="brand">✦ VRPAIData ✦</div>
+  <div class="brand">✦ VRPAIData ✦</div>
 
-<h1>வைகுண்ட ஏகாதசி 2026</h1>
+  <h1>வைகுண்ட ஏகாதசி 2026</h1>
 
-<div class="subtitle">
-ஸ்ரீதேவி பூதேவி சமேத<br>
-<span class="gold">ஸ்ரீ வைகுண்டநாதர் திருவடிகளே சரணம்</span>
-</div>
+  <div class="subtitle">
+    ஸ்ரீதேவி பூதேவி சமேத<br>
+    <span class="gold">ஸ்ரீ வைகுண்டநாதர் திருவடிகளே சரணம்</span>
+  </div>
 
-<!-- VAikunta Gate -->
+  <div class="gate-area" id="gateArea">
 
-<div class="gate-area" id="gateArea">
+    <div class="inner-scene" id="innerScene"></div>
 
-<div class="inner-scene" id="innerScene"></div>
+    <div class="light" id="light"></div>
 
-<div class="light" id="light"></div>
+    <div class="gates" id="gates">
+      <div class="door left"></div>
+      <div class="door right"></div>
+    </div>
 
-<div class="gates" id="gates">
-<div class="door left"></div>
-<div class="door right"></div>
-</div>
+    <div class="god-scene" id="godScene">
+      <img src="vishnu.png" alt="ஸ்ரீதேவி பூதேவி சமேத வைகுண்டநாதர்">
+    </div>
 
-<!-- Vishnu Darshan -->
+    <div class="flash" id="flash"></div>
 
-<div class="god-scene" id="godScene">
-<img src="vishnu.png" alt="ஸ்ரீதேவி பூதேவி சமேத வைகுண்டநாதர்">
-</div>
+  </div>
 
-<div class="flash" id="flash"></div>
+  <div class="lamps">
+    <span class="lamp">🪔</span>
+    <span class="lamp">🪔</span>
+    <span class="lamp">🪔</span>
+    <span class="lamp">🪔</span>
+  </div>
 
-</div>
+  <button onclick="openGate()" id="openButton">
+    வைகுண்ட வாசலை திறக்க ✨
+  </button>
 
-<div class="lamps">
-<span class="lamp">🪔</span>
-<span class="lamp">🪔</span>
-<span class="lamp">🪔</span>
-<span class="lamp">🪔</span>
-</div>
+  <p id="statusText" class="gold">
+    ஸ்ரீமன் நாராயணன் தரிசனம் பெறுங்கள்
+  </p>
 
-<button onclick="openGate()" id="openButton">
-வைகுண்ட வாசலைத் திறக்கவும் ✨
-</button>
+  <!-- SENDER NAME ONLY -->
 
-<p id="statusText" class="gold" style="margin:18px 0;line-height:2">
-ஸ்ரீமன் நாராயணன் தரிசனம் பெறுங்கள்
-</p>
+  <div class="section" id="formSection">
 
-<!-- NAME FORM -->
+    <h2 class="gold">வாழ்த்தை பகிருங்கள்</h2>
 
-<div class="section" id="formSection">
+    <p>அனுப்புநர் பெயர்</p>
 
-<h2 class="gold">உங்கள் வாழ்த்தை உருவாக்குங்கள்</h2>
+    <input
+      type="text"
+      id="sender"
+      placeholder="உங்கள் பெயர்"
+      maxlength="45"
+      autocomplete="name">
 
-<p style="margin:15px">
-உங்கள் பெயரை உள்ளிடுங்கள்
-</p>
+    <button onclick="createGreeting()">
+      வாழ்த்தைப் பகிரவும் ➜
+    </button>
 
-<input
-type="text"
-id="sender"
-placeholder="உங்கள் பெயர்"
-maxlength="45">
+  </div>
 
-<textarea
-id="wish"
-rows="3"
-placeholder="உங்கள் வாழ்த்து செய்தி..."
-maxlength="250"></textarea>
+  <!-- GREETING -->
 
-<button onclick="createGreeting()">
-வாழ்த்து உருவாக்கவும் ➜
-</button>
+  <div class="section" id="greeting">
 
-</div>
+    <div class="greeting-title">
+      🙏 ஓம் நமோ நாராயணாய 🙏
+    </div>
 
-<!-- GREETING CARD -->
+    <p>
+      இந்த வைகுண்ட ஏகாதசி திருநாளில்
+      ஸ்ரீமன் நாராயணனின் அருளால்
+      உங்கள் இல்லத்தில் அமைதியும்,
+      மகிழ்ச்சியும், ஆரோக்கியமும்,
+      செல்வமும் நிறைந்திருக்கட்டும்.
+    </p>
 
-<div class="section" id="greeting">
+    <div class="gold" style="font-size:20px;margin:15px 0">
+      இனிய வைகுண்ட ஏகாதசி நல்வாழ்த்துக்கள்!
+    </div>
 
-<div class="greeting-title">
-🙏 ஓம் நமோ நாராயணாய 🙏
-</div>
+    <div id="senderDisplay"></div>
 
-<p>
-இந்த வைகுண்ட ஏகாதசி திருநாளில்
-ஸ்ரீமன் நாராயணனின் அருளால்
-உங்கள் இல்லத்தில்
-<br>
-அமைதியும், மகிழ்ச்சியும்,
-ஆரோக்கியமும், செல்வமும்
-நிறைந்திருக்கட்டும்.
-</p>
+    <div id="shareButtons">
+      <button onclick="shareGreeting()">
+        WhatsApp-ல் பகிரவும் ↗
+      </button>
 
-<div class="gold" style="font-size:22px;margin:20px 0">
-இனிய வைகுண்ட ஏகாதசி நல்வாழ்த்துக்கள்!
-</div>
+      <button onclick="copyLink()">
+        Link Copy செய்யவும்
+      </button>
+    </div>
 
-<div id="senderDisplay"></div>
+  </div>
 
-<p id="wishDisplay"></p>
-
-<button onclick="shareGreeting()">
-WhatsApp-ல் பகிரவும் ↗
-</button>
-
-<button onclick="copyLink()">
-வாழ்த்து Link Copy செய்யவும்
-</button>
+  <footer>
+    VRPAIData © 2026<br>
+    ஸ்ரீமன் நாராயணன் திருவடி சரணம்
+  </footer>
 
 </div>
 
-<footer>
-VRPAIData © 2026
-<br><br>
-ஸ்ரீமன் நாராயணன் திருவடி சரணம்
-</footer>
+<!-- SHARED LINK WELCOME SCREEN -->
+
+<div id="sharedWelcome">
+
+  <div class="shared-card">
+
+    <h2>🙏 ஓம் நமோ நாராயணாய 🙏</h2>
+
+    <p>வைகுண்ட ஏகாதசி நல்வாழ்த்துக்கள்!</p>
+
+    <p style="margin-top:12px">
+      வாழ்த்துகளுடன் அன்புடன்,
+    </p>
+
+    <div class="shared-name" id="sharedSender"></div>
+
+    <p>
+      ஸ்ரீதேவி பூதேவி சமேத
+      வைகுண்டநாதனை தரிசியுங்கள்.
+    </p>
+
+    <button onclick="startDarshan()">
+      வைகுண்ட நாதனை தரிசியுங்கள் ✨
+    </button>
+
+  </div>
 
 </div>
 
 <script>
 
-// GOLD PARTICLES
+/* GOLD PARTICLES */
 
-for(let i=0;i<35;i++) {
+for(let i=0;i<28;i++) {
   let p=document.createElement("div");
   p.className="particle";
   p.style.left=Math.random()*100+"%";
-  p.style.animationDuration=(4+Math.random()*7)+"s";
+  p.style.animationDuration=(5+Math.random()*7)+"s";
   p.style.animationDelay=Math.random()*5+"s";
   document.body.appendChild(p);
 }
 
-// MUSIC ON OFF
+/* MUSIC */
 
 const mantra=document.getElementById("mantra");
 const musicButton=document.getElementById("musicButton");
 
 function updateMusicButton() {
-  musicButton.innerText=mantra.paused?"🔇 இசை OFF":"🔊 இசை ON";
+  musicButton.innerText=mantra.paused
+    ? "🔇 இசை OFF"
+    : "🔊 இசை ON";
+}
+
+async function playMusic() {
+  try {
+    await mantra.play();
+  } catch(e) {
+    console.log("Audio playback needs user interaction.");
+  }
+  updateMusicButton();
 }
 
 async function toggleMusic() {
   if(mantra.paused) {
-    try {
-      await mantra.play();
-    } catch(e) {
-      alert("mantra.mp3 கோப்பை சரிபார்க்கவும்.");
-    }
+    await playMusic();
   } else {
     mantra.pause();
+    updateMusicButton();
   }
-  updateMusicButton();
 }
 
 mantra.addEventListener("play",updateMusicButton);
 mantra.addEventListener("pause",updateMusicButton);
 
-window.addEventListener("load",()=>{
-  mantra.play().then(updateMusicButton).catch(()=>{
-    updateMusicButton();
-  });
-});
+/* FLOWER RAIN */
 
-// GATE OPENING SEQUENCE
+function createFlowerRain() {
+
+  const flowers=["🌸","🌺","🌼","🌷","💮"];
+
+  for(let i=0;i<24;i++) {
+
+    let f=document.createElement("div");
+    f.className="flower";
+    f.innerText=flowers[Math.floor(Math.random()*flowers.length)];
+
+    const fromLeft=i%2===0;
+
+    f.style.left=fromLeft
+      ? (Math.random()*18)+"%"
+      : (82+Math.random()*15)+"%";
+
+    f.style.setProperty("--delay",(Math.random()*2)+"s");
+    f.style.setProperty("--distance",(55+Math.random()*35)+"vh");
+
+    document.body.appendChild(f);
+  }
+}
+
+/* GATE OPENING */
 
 let gateStarted=false;
 
@@ -535,6 +728,9 @@ function openGate() {
   if(gateStarted) return;
   gateStarted=true;
 
+  playMusic();
+
+  const page=document.getElementById("mainPage");
   const openButton=document.getElementById("openButton");
   const gates=document.getElementById("gates");
   const light=document.getElementById("light");
@@ -544,124 +740,142 @@ function openGate() {
   const status=document.getElementById("statusText");
   const form=document.getElementById("formSection");
 
+  page.classList.add("darshan");
+
   openButton.disabled=true;
   openButton.style.display="none";
 
-  // STEP 1 - GOLDEN DOORS OPEN
-
   status.innerText="வைகுண்ட வாசல் திறக்கப்படுகிறது...";
+
+  /* GOLDEN DOORS OPEN */
 
   gates.classList.add("open");
   light.classList.add("glow");
 
-  // STEP 2 - CAMERA ENTERS VAikuntha
+  /* CAMERA ENTERS VAIKUNTHA */
 
   setTimeout(()=>{
     status.innerText="வைகுண்ட லோகத்திற்குள் பிரவேசிக்கிறீர்கள்...";
     scene.classList.add("zoom");
   },5000);
 
-  // STEP 3 - DIVINE LIGHT
+  /* DIVINE LIGHT */
 
   setTimeout(()=>{
     status.innerText="ஸ்ரீமன் நாராயணன் திருக்காட்சி...";
     flash.classList.add("active");
   },10500);
 
-  // STEP 4 - LORD VISHNU DARSHAN
+  /* GOD DARSHAN */
 
   setTimeout(()=>{
     god.classList.add("show");
     status.innerText="ஸ்ரீதேவி பூதேவி சமேத ஸ்ரீ வைகுண்டநாதர் தரிசனம்";
   },11500);
 
-  // STEP 5 - GREETING FORM
+  /* FLOWER RAIN */
+
+  setTimeout(()=>{
+    createFlowerRain();
+  },14500);
+
+  /* SENDER FORM */
 
   setTimeout(()=>{
     form.style.display="block";
-    form.scrollIntoView({behavior:"smooth",block:"center"});
-  },17000);
+    status.innerText="வாழ்த்துகளை அன்புடன் பகிருங்கள்";
+  },18000);
 
 }
 
-// CREATE GREETING
+/* CREATE GREETING LINK */
 
 function createGreeting() {
 
   const name=document.getElementById("sender").value.trim();
-  const wish=document.getElementById("wish").value.trim();
 
   if(!name) {
-    alert("தயவுசெய்து உங்கள் பெயரை உள்ளிடுங்கள்");
+    alert("தயவுசெய்து அனுப்புநர் பெயரை உள்ளிடுங்கள்");
     return;
   }
 
-  document.getElementById("senderDisplay").innerText="அன்புடன்: "+name;
-  document.getElementById("wishDisplay").innerText=wish;
+  document.getElementById("senderDisplay").innerText=
+    "வாழ்த்துகளுடன் அன்புடன், "+name;
 
   document.getElementById("formSection").style.display="none";
   document.getElementById("greeting").style.display="block";
 
   const url=new URL(window.location.href);
+
+  url.search="";
   url.searchParams.set("sender",name);
-  url.searchParams.set("wish",wish);
 
   history.replaceState(null,"",url.toString());
 
-  document.getElementById("greeting").scrollIntoView({
-    behavior:"smooth"
-  });
 }
 
-// WHATSAPP SHARE
+/* WHATSAPP SHARE */
 
 function shareGreeting() {
 
-  const name=document.getElementById("senderDisplay").innerText;
-  const wish=document.getElementById("wishDisplay").innerText;
+  const name=document.getElementById("sender").value.trim();
 
   const link=window.location.href;
 
   const message=
-  "🙏 ஓம் நமோ நாராயணாய 🙏\n\n"+
-  "இனிய வைகுண்ட ஏகாதசி நல்வாழ்த்துக்கள்!\n\n"+
-  "ஸ்ரீமன் நாராயணனின் அருளால் அனைவருக்கும் மகிழ்ச்சியும் அமைதியும் கிடைக்கட்டும்.\n\n"+
-  (wish?wish+"\n\n":"")+
-  name+"\n\n"+
-  "வாழ்த்தைப் பார்க்க:\n"+link;
+    "🙏 ஓம் நமோ நாராயணாய 🙏\n\n"+
+    "இனிய வைகுண்ட ஏகாதசி நல்வாழ்த்துக்கள்!\n\n"+
+    "ஸ்ரீதேவி பூதேவி சமேத வைகுண்டநாதனை தரிசியுங்கள்.\n\n"+
+    "வாழ்த்துகளுடன் அன்புடன்,\n"+
+    name+"\n\n"+
+    "இந்த இணைப்பைத் திறந்து வைகுண்ட நாதனை தரிசியுங்கள்:\n"+
+    link;
 
   window.open(
     "https://wa.me/?text="+encodeURIComponent(message),
     "_blank"
   );
+
 }
 
-// COPY LINK
+/* COPY LINK */
 
 async function copyLink() {
+
   try {
     await navigator.clipboard.writeText(window.location.href);
     alert("வாழ்த்து Link Copy செய்யப்பட்டது!");
   } catch(e) {
     prompt("இந்த Link-ஐ Copy செய்யுங்கள்",window.location.href);
   }
+
 }
 
-// OPEN SHARED GREETING
+/* SHARED LINK: RETURN TO FIRST GATE */
+
+function startDarshan() {
+
+  const cleanURL=window.location.pathname;
+
+  window.location.href=cleanURL;
+
+}
+
+/* CHECK SHARED LINK */
 
 window.addEventListener("DOMContentLoaded",()=>{
 
   const params=new URLSearchParams(window.location.search);
   const sender=params.get("sender");
-  const wish=params.get("wish");
 
   if(sender) {
 
-    document.getElementById("senderDisplay").innerText="அன்புடன்: "+sender;
-    document.getElementById("wishDisplay").innerText=wish||"";
+    document.getElementById("mainPage").style.display="none";
+    document.getElementById("musicButton").style.display="none";
 
-    document.getElementById("greeting").style.display="block";
-    document.getElementById("openButton").style.display="none";
+    document.getElementById("sharedWelcome").style.display="flex";
+
+    document.getElementById("sharedSender").innerText=sender;
 
   }
 
