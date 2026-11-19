@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080d18">
+<title>Men's Day 2026 | Surprise Greeting</title>
+<meta property="og:title" content="உங்களுக்காக ஒரு சிறப்பு பரிசு!">
+<meta property="og:description" content="திறந்து பாருங்கள்... ஒரு அழகான வாழ்த்து காத்திருக்கிறது!">
+<style>
+:root{--gold:#f5c66b;--muted:#b5c0d2}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(145deg,#080d18,#18263b);color:#fff;font-family:"Noto Sans Tamil","Latha",system-ui,sans-serif}
+.hidden{display:none!important}
+#intro{position:fixed;inset:0;z-index:1000;background:radial-gradient(circle at center,#26354c,#080d18 75%);display:flex;align-items:center;justify-content:center;text-align:center;overflow:auto;padding:20px;transition:opacity 1.2s}
+#particles{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.introContent{position:relative;z-index:2;max-width:450px;width:100%}
+.smallTag{color:var(--gold);letter-spacing:3px;font-size:12px}
+.introTitle{color:#ffe5ad;font-size:clamp(25px,7vw,38px);margin:20px 0 10px;text-shadow:0 0 25px #f5c66b80}
+.gift{font-size:110px;margin:25px 0;display:inline-block;cursor:pointer;filter:drop-shadow(0 0 25px #f5c66b);animation:giftFloat 2s infinite ease-in-out}
+@keyframes giftFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-15px) scale(1.08)}}
+.gift.opening{animation:giftOpen .8s forwards}
+@keyframes giftOpen{0%{transform:scale(1)}50%{transform:scale(1.5) rotate(15deg)}100%{transform:scale(0) rotate(360deg);opacity:0}}
+.introText{color:#d5deeb;line-height:1.9;font-size:14px}
+.goldBtn{background:linear-gradient(120deg,#ffe4a3,#dba443);color:#241a0c;border:0;border-radius:30px;padding:14px 28px;font-weight:900;font-size:15px;cursor:pointer;box-shadow:0 0 25px #f5c66b50}
+#reveal{position:fixed;inset:0;z-index:1001;display:none;align-items:center;justify-content:center;flex-direction:column;text-align:center;background:radial-gradient(circle,#35445b,#080d18 75%);padding:20px;overflow:auto}
+#reveal.show{display:flex}
+.revealText{color:#ffe1a0;font-size:clamp(26px,7vw,43px);font-weight:900;text-shadow:0 0 25px #f5c66b;animation:revealZoom 1.4s ease both}
+@keyframes revealZoom{from{transform:scale(.2);opacity:0}to{transform:scale(1);opacity:1}}
+.revealSub{color:white;line-height:2;margin:10px 0}
+.revealHeart{font-size:45px;animation:heartBeat 1.2s infinite}
+@keyframes heartBeat{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+#sharedGreetingPhoto{display:none;max-width:min(82vw,390px);max-height:38vh;object-fit:contain;border-radius:14px;border:2px solid #f5c66b;margin:12px auto}
+.senderReveal{color:#ffe1a0;font-size:18px;font-weight:900;margin:12px 0}
+#studio{opacity:0;transition:opacity 1.2s ease}
+#studio.visible{opacity:1}
+.wrap{max-width:1050px;margin:auto;padding:22px 15px 40px}
+header{text-align:center;padding:18px 8px 24px}
+header .tag{color:var(--gold);letter-spacing:2px;font-size:12px}
+h1{font-size:clamp(25px,6vw,42px);margin:10px 0;color:#ffe1a0}
+header p{color:var(--muted);margin:0}
+.panel{background:#152238;border:1px solid #ffffff20;border-radius:20px;padding:16px;margin:14px 0;box-shadow:0 12px 35px #0004}
+input[type=file]{max-width:100%;color:#dce6f5}
+input[type=text]{width:100%;padding:13px;border-radius:10px;background:#0e192b;border:1px solid #ffffff30;color:white;font-size:15px;margin:5px 0 12px}
+label{font-size:14px;color:#ffe1a0}
+button,.filebtn{border:0;border-radius:12px;padding:12px 16px;background:var(--gold);color:#241a0c;font-weight:800;cursor:pointer}
+button.secondary{background:#2b3d59;color:white;border:1px solid #ffffff24}
+.hint{font-size:13px;color:var(--muted);text-align:center;margin:12px 0 0;line-height:1.7}
+.upload{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media(min-width:700px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.style{background:#0e192b;border:1px solid #ffffff1c;border-radius:15px;padding:9px;cursor:pointer;text-align:left;color:white}
+.style.active{outline:2px solid var(--gold);background:#23344d}
+.style canvas{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:10px;display:block;background:#26344a}
+.style strong{display:block;margin:8px 3px 2px;font-size:14px}
+.style small{display:block;color:var(--muted);margin:0 3px 4px}
+.preview{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;align-items:center}
+@media(min-width:700px){.preview{grid-template-columns:minmax(0,430px) 1fr}}
+#mainCanvas{width:100%;max-height:75vh;object-fit:contain;border-radius:14px;background:#0a1220;display:block}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.actions button{flex:1;min-width:130px}
+.caption{font-size:14px;line-height:1.8;color:#d5deeb}
+footer{text-align:center;color:#8f9db2;font-size:12px;padding:18px}
+</style>
+</head>
+<body>
+
+<!-- Gift opening screen shown when recipient opens the shared link -->
+<section id="intro">
+ <canvas id="particles"></canvas>
+ <div class="introContent" id="giftContent">
+  <div class="smallTag">A SPECIAL SURPRISE • 2026</div>
+  <h2 class="introTitle">உங்களுக்காக ஒரு சிறப்பு பரிசு!</h2>
+  <div class="gift" id="giftIcon">🎁</div>
+  <p class="introText">உங்களுக்காக ஒரு அழகான வாழ்த்து காத்திருக்கிறது...<br>பரிசுப் பெட்டியைத் தொட்டுத் திறக்கவும் ❤️</p>
+  <button class="goldBtn" id="openGift">பரிசைத் திறக்கவும் ❤️</button>
+ </div>
+</section>
+
+<section id="reveal">
+ <div class="smallTag">19 NOVEMBER 2026</div>
+ <div class="revealHeart">❤️</div>
+ <div class="revealText">HAPPY MEN'S DAY</div>
+ <h2 style="color:white;font-size:clamp(23px,5vw,32px)">இனிய ஆண்கள் தின நல்வாழ்த்துக்கள்!</h2>
+ <p class="revealSub">உழைப்பையும் பொறுப்பையும் மதிப்போம்.<br>சொல்லப்படாத வலிகளையும் புரிந்துகொள்வோம்.<br>மனிதநேயத்துடன் வாழ்வோம்.</p>
+ <img id="sharedGreetingPhoto" alt="பகிரப்பட்ட வாழ்த்து புகைப்படம்">
+ <div class="senderReveal" id="senderReveal"></div>
+ <button class="goldBtn" id="continueToStudio">வாழ்த்துகளைத் தொடருங்கள் →</button>
+</section>
+
+<div id="studio">
+<div class="wrap">
+<header>
+ <div class="tag">MEN'S DAY • PHOTO TRANSFORMATION STUDIO</div>
+ <h1>உங்கள் புகைப்படம்…<br>பல பரிமாணங்களில்!</h1>
+ <p>உங்கள் படத்தைப் பதிவேற்றி, உங்களுக்குப் பிடித்த வாழ்த்து வடிவத்தைத் தேர்ந்தெடுங்கள்.</p>
+</header>
+
+<!-- PERSONAL GREETING: sender field retained; separate create-link button removed -->
+<section class="panel">
+ <h2>💌 தனிப்பட்ட வாழ்த்து</h2>
+ <label>அனுப்புநர் பெயர்</label>
+ <input type="text" id="sender" placeholder="உங்கள் பெயரை உள்ளிடுங்கள்">
+ <button id="updateBtn">வாழ்த்தைப் புதுப்பிக்கவும்</button>
+ <p class="hint" id="linkStatus"></p>
+</section>
+
+<section class="panel">
+ <div class="upload">
+  <label class="filebtn" for="photo">📷 புகைப்படம் Upload செய்யுங்கள்</label>
+  <input id="photo" type="file" accept="image/*">
+  <button id="reset" class="secondary">மீண்டும் தொடங்கு</button>
+ </div>
+ <p class="hint">உங்கள் புகைப்படம் இந்த உலாவியிலேயே செயலாக்கப்படும். எந்த சர்வருக்கும் பதிவேற்றப்படாது.</p>
+</section>
+
+<section id="stylesPanel" class="panel hidden">
+ <h2>உங்கள் தோற்றத்தைத் தேர்ந்தெடுங்கள்</h2>
+ <div class="grid" id="styles"></div>
+</section>
+
+<section id="previewPanel" class="panel hidden">
+ <div class="preview">
+  <canvas id="mainCanvas" width="900" height="1200"></canvas>
+  <div>
+   <h2 id="chosenTitle">உங்கள் தேர்வு</h2>
+   <p class="caption">பிடித்த வடிவத்தைத் தேர்ந்தெடுத்து, உங்கள் சாதனத்தில் சேமிக்கலாம் அல்லது வாழ்த்து Link உடன் பகிரலாம்.</p>
+   <div class="actions">
+    <button id="download">⬇ படத்தைச் சேமி</button>
+    <button id="share" class="secondary">↗ புகைப்படம் + வாழ்த்து பகிர்</button>
+   </div>
+   <p class="hint" id="status" aria-live="polite"></p>
+  </div>
+ </div>
+</section>
+<footer>இனிய சர்வதேச ஆண்கள் தின நல்வாழ்த்துக்கள் ❤️<br><br>உழைப்பு • பொறுப்பு • மனிதநேயம்</footer>
+</div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const photoInput=$('photo'),stylesPanel=$('stylesPanel'),previewPanel=$('previewPanel'),stylesEl=$('styles');
+const main=$('mainCanvas'),mctx=main.getContext('2d');
+const sender=$('sender');
+let source=null,selected='hero',giftOpened=false,sharedPayload=null,preparedShareFile=null;
+
+const params=new URLSearchParams(location.search);
+sender.value=params.get('from')||'';
+
+const particleCanvas=$('particles'),pctx=particleCanvas.getContext('2d');
+let particles=[];
+function resizeParticles(){
+ particleCanvas.width=innerWidth;particleCanvas.height=innerHeight;
+ particles=Array.from({length:85},()=>({x:Math.random()*particleCanvas.width,y:Math.random()*particleCanvas.height,r:Math.random()*2+.5,speed:Math.random()*.8+.2,alpha:Math.random()*.8+.2}));
+}
+function animateParticles(){
+ pctx.clearRect(0,0,particleCanvas.width,particleCanvas.height);
+ particles.forEach(p=>{p.y-=p.speed;if(p.y<0){p.y=particleCanvas.height;p.x=Math.random()*particleCanvas.width}
+  pctx.beginPath();pctx.arc(p.x,p.y,p.r,0,Math.PI*2);pctx.fillStyle=`rgba(255,211,130,${p.alpha})`;pctx.shadowBlur=12;pctx.shadowColor='#ffc96b';pctx.fill()});
+ requestAnimationFrame(animateParticles);
+}
+resizeParticles();animateParticles();window.addEventListener('resize',resizeParticles);
+
+function decodeSharedData(){
+ try{
+  if(location.hash){
+   const encoded=location.hash.slice(1);
+   const data=JSON.parse(decodeURIComponent(escape(atob(encoded))));
+   if(data && data.sender)return data;
+  }
+ }catch(e){}
+ const senderFromLink=params.get('from');
+ return senderFromLink ? {sender:senderFromLink} : null;
+}
+sharedPayload=decodeSharedData();
+if(sharedPayload){
+ sender.value=sharedPayload.sender||'';
+ $('studio').classList.add('hidden');
+ $('continueToStudio').classList.add('hidden');
+}
+function goToStudio(){
+ $('reveal').classList.remove('show');
+ $('intro').classList.add('hidden');
+ $('studio').classList.remove('hidden');
+ requestAnimationFrame(()=>{$('studio').classList.add('visible');window.scrollTo({top:0,behavior:'smooth'})});
+}
+function openGift(){
+ if(giftOpened)return;giftOpened=true;
+ $('giftIcon').classList.add('opening');
+ setTimeout(()=>{
+  $('giftContent').classList.add('hidden');
+  $('reveal').classList.add('show');
+  if(sharedPayload){
+   if(sharedPayload.photo){$('sharedGreetingPhoto').src=sharedPayload.photo;$('sharedGreetingPhoto').style.display='block'}
+   $('senderReveal').textContent='❤️ அன்புடன் :- '+(sharedPayload.sender||'')+' ❤️';
+  }
+  setTimeout(goToStudio,3000);
+ },650);
+}
+$('openGift').addEventListener('click',openGift);
+$('giftIcon').addEventListener('click',openGift);
+$('continueToStudio').addEventListener('click',goToStudio);
+$('updateBtn').addEventListener('click',()=>{
+ if(source)choose(selected);
+ $('linkStatus').textContent='உங்கள் வாழ்த்து புதுப்பிக்கப்பட்டது! ❤️';
+});
+
+const presets=[
+ {id:'hero',name:'சினிமாட்டிக் ஹீரோ',desc:'தங்க ஒளி • திரைப்படத் தோற்றம்',filter:'contrast(1.12) saturate(1.18)'},
+ {id:'mono',name:'கருப்பு வெள்ளை',desc:'கிளாசிக் • உணர்வுப்பூர்வம்',filter:'grayscale(1) contrast(1.2)'},
+ {id:'warm',name:'கோல்டன் கிளோ',desc:'சூரிய ஒளி • வெப்பமான நிறம்',filter:'sepia(.28) saturate(1.35) contrast(1.08)'},
+ {id:'cool',name:'ராயல் ப்ளூ',desc:'நீல நிறம் • மாடர்ன் லுக்',filter:'saturate(.9) contrast(1.15) hue-rotate(8deg)'},
+ {id:'vintage',name:'விண்டேஜ்',desc:'பழைய திரைப்பட நிறம்',filter:'sepia(.55) contrast(1.05) saturate(.8)'},
+ {id:'bold',name:'பவர் லுக்',desc:'ஆழமான நிறம் • வலிமையான தோற்றம்',filter:'contrast(1.38) saturate(1.12) brightness(.92)'}
+];
+function drawCover(ctx,canvas,preset,withText=true){
+ const W=canvas.width,H=canvas.height;ctx.clearRect(0,0,W,H);ctx.save();ctx.filter=preset.filter;
+ const scale=Math.max(W/source.width,H/source.height),sw=W/scale,sh=H/scale,sx=(source.width-sw)/2,sy=(source.height-sh)/2;
+ ctx.drawImage(source,sx,sy,sw,sh,0,0,W,H);ctx.restore();
+ const grad=ctx.createLinearGradient(0,0,0,H);grad.addColorStop(0,'rgba(5,12,25,.12)');grad.addColorStop(.52,'rgba(5,12,25,0)');grad.addColorStop(1,'rgba(5,12,25,.90)');
+ ctx.fillStyle=grad;ctx.fillRect(0,0,W,H);ctx.strokeStyle='rgba(255,220,150,.8)';ctx.lineWidth=5;ctx.strokeRect(22,22,W-44,H-44);
+ if(withText){
+  ctx.textAlign='center';ctx.shadowColor='rgba(0,0,0,.85)';ctx.shadowBlur=16;
+  ctx.fillStyle='#ffe4a3';ctx.font='bold 42px sans-serif';ctx.fillText("INTERNATIONAL MEN'S DAY",W/2,95);
+  const s=sender.value.trim();
+  ctx.fillStyle='#fff';ctx.font='bold 65px sans-serif';ctx.fillText('ஆண்கள் தின',W/2,H-225);
+  ctx.fillStyle='#ffd47b';ctx.font='bold 68px sans-serif';ctx.fillText('நல்வாழ்த்துக்கள்!',W/2,H-145);
+  ctx.fillStyle='#fff';ctx.font='28px sans-serif';ctx.fillText('உழைப்பு • பொறுப்பு • மனிதநேயம்',W/2,H-85);
+  if(s){ctx.font='27px sans-serif';ctx.fillStyle='#ffe1a0';ctx.fillText('அன்புடன்: '+s,W/2,H-42)}
+  ctx.shadowBlur=0;
+ }
+}
+function makeCards(){
+ stylesEl.innerHTML='';
+ presets.forEach(p=>{
+  const b=document.createElement('button');b.type='button';b.className='style'+(p.id===selected?' active':'');
+  const c=document.createElement('canvas');c.width=360;c.height=450;
+  const name=document.createElement('strong');name.textContent=p.name;
+  const desc=document.createElement('small');desc.textContent=p.desc;
+  b.append(c,name,desc);drawCover(c.getContext('2d'),c,p,false);
+  b.addEventListener('click',()=>choose(p.id));stylesEl.append(b);
+ });
+}
+function choose(id){
+ selected=id;const p=presets.find(x=>x.id===id);
+ [...stylesEl.children].forEach((el,i)=>el.classList.toggle('active',presets[i].id===id));
+ drawCover(mctx,main,p,true);$('chosenTitle').textContent=p.name;
+ preparedShareFile=null;
+ canvasBlob(main).then(blob=>{
+  if(blob)preparedShareFile=new File([blob],'mens-day-greeting.jpg',{type:'image/jpeg'});
+ }).catch(()=>{});
+}
+photoInput.addEventListener('change',()=>{
+ const file=photoInput.files&&photoInput.files[0];if(!file)return;
+ if(!file.type.startsWith('image/')){$('status').textContent='படக் கோப்பைத் தேர்ந்தெடுக்கவும்.';return}
+ const url=URL.createObjectURL(file),img=new Image();
+ img.onload=()=>{source=img;stylesPanel.classList.remove('hidden');previewPanel.classList.remove('hidden');makeCards();choose(selected);URL.revokeObjectURL(url);$('status').textContent='புகைப்படம் தயார்! வாழ்த்து உரையுடன் Share செய்யலாம்.'};
+ img.onerror=()=>{$('status').textContent='இந்தப் புகைப்படத்தைத் திறக்க முடியவில்லை.';URL.revokeObjectURL(url)};
+ img.src=url;
+});
+function canvasBlob(canvas){return new Promise(resolve=>canvas.toBlob(resolve,'image/jpeg',.78))}
+$('download').addEventListener('click',()=>{
+ if(!source)return;const a=document.createElement('a');a.download='mens-day-greeting-2026.png';a.href=main.toDataURL('image/png');a.click();
+});
+$('share').addEventListener('click',async()=>{
+ if(!source){$('status').textContent='முதலில் புகைப்படத்தை Upload செய்யுங்கள்.';return}
+ if(!sender.value.trim()){$('status').textContent='அனுப்புநர் பெயரை உள்ளிடுங்கள்.';sender.focus();return}
+ try{
+  // Simple, readable Gift Link: sender name is carried as a query parameter.
+  // No photo/Base64 data is placed in the URL.
+  const shareUrl=new URL(location.href);
+  shareUrl.search='';
+  shareUrl.hash='';
+  shareUrl.searchParams.set('from',sender.value.trim());
+  const finalUrl=shareUrl.toString();
+
+  const shareText=`❤️ இனிய சர்வதேச ஆண்கள் தின நல்வாழ்த்துக்கள்! ❤️
+
+உழைப்பையும் பொறுப்பையும் மதிப்போம்.
+சொல்லப்படாத வலிகளையும் புரிந்துகொள்வோம்.
+மனிதநேயத்துடன் வாழ்வோம்.
+
+🎁 உங்களுக்காக ஒரு சிறப்பு வாழ்த்து காத்திருக்கிறது!
+கீழே உள்ள Gift Link-ஐத் திறந்து பாருங்கள்:
+${finalUrl}`;
+
+  // Share the final edited Studio canvas as a normal image attachment.
+  const blob=await canvasBlob(main);
+  if(!blob) throw new Error('Image creation failed');
+  const editedImage=new File([blob],'mens-day-greeting.jpg',{type:'image/jpeg'});
+  const canShareImage=!!(navigator.share && navigator.canShare && navigator.canShare({files:[editedImage]}));
+
+  if(navigator.share && canShareImage){
+   await navigator.share({title:'உங்களுக்காக ஒரு சிறப்பு வாழ்த்து ❤️',text:shareText,files:[editedImage]});
+   $('status').textContent='Studio புகைப்படமும் Gift Link-உம் பகிரப்பட்டன! ❤️';
+  }else if(navigator.share){
+   await navigator.share({title:'உங்களுக்காக ஒரு சிறப்பு வாழ்த்து ❤️',text:shareText});
+   $('status').textContent='இந்த உலாவியில் புகைப்பட Attachment பகிர்வு ஆதரிக்கப்படவில்லை. Gift Link மட்டும் பகிரப்பட்டது.';
+  }else{
+   $('status').textContent='இந்த உலாவியில் Share வசதி இல்லை. Chrome-ல் திறந்து முயற்சிக்கவும்.';
+  }
+ }catch(e){
+  $('status').textContent=e && e.name==='AbortError'?'பகிர்வு ரத்து செய்யப்பட்டது.':'பகிர முடியவில்லை. Chrome-ல் திறந்து மீண்டும் முயற்சிக்கவும்.';
+ }
+});
+$('reset').addEventListener('click',()=>{
+ photoInput.value='';source=null;stylesPanel.classList.add('hidden');previewPanel.classList.add('hidden');stylesEl.innerHTML='';$('status').textContent='';
+});
+</script>
+</body>
+</html>
