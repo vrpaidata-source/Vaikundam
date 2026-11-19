@@ -383,7 +383,8 @@ button:disabled {
 
 .page.darshan #statusText {
   position:fixed;
-  top:calc(env(safe-area-inset-top) + 18px);
+  top:auto;
+  bottom:calc(env(safe-area-inset-bottom) + 18px);
   left:10px;
   right:10px;
   width:auto;
@@ -870,12 +871,19 @@ function openGate() {
     createFlowerRain();
   },14500);
 
-  /* SENDER FORM */
+  /* FLOWERS FINISH - THEN SENDER FORM */
 
-  setTimeout(()=>{
-    form.style.display="block";
-    status.innerText="வாழ்த்துகளை அன்புடன் பகிருங்கள்";
-  },18000);
+setTimeout(()=>{
+
+  document.querySelectorAll(".flower").forEach(f=>{
+    f.remove();
+  });
+
+  status.innerText="வாழ்த்துகளை அன்புடன் பகிருங்கள்";
+
+  form.style.display="block";
+
+},22000);
 
 }
 
