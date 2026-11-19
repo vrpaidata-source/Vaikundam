@@ -938,11 +938,10 @@ async function shareGreeting() {
 
     try {
 
-      await navigator.share({
-        title:"இனிய வைகுண்ட ஏகாதசி நல்வாழ்த்துக்கள்",
-        text:message,
-        url:shareURL.toString()
-      });
+await navigator.share({
+  title:"இனிய வைகுண்ட ஏகாதசி நல்வாழ்த்துக்கள்",
+  text:message + "\n\n" + shareURL.toString()
+});
 
     } catch(error) {
 
