@@ -836,26 +836,35 @@ function createGreeting() {
 
 /* WHATSAPP SHARE */
 
-function shareGreeting() {
+async function shareGreeting() {
 
-  const name=document.getElementById("sender").value.trim();
+  const name = document.getElementById("sender").value.trim();
+  const link = window.location.href;
 
-  const link=window.location.href;
-
-  const message=
-    "🙏 ஓம் நமோ நாராயணாய 🙏\n\n"+
-    "இனிய வைகுண்ட ஏகாதசி நல்வாழ்த்துக்கள்!\n\n"+
-    "ஸ்ரீதேவி பூதேவி சமேத வைகுண்டநாதனை தரிசியுங்கள்.\n\n"+
-    "வாழ்த்துகளுடன் அன்புடன்,\n"+
-    name+"\n\n"+
-    "இந்த இணைப்பைத் திறந்து வைகுண்ட நாதனை தரிசியுங்கள்:\n"+
+  const message =
+    "🙏 ஓம் நமோ நாராயணாய 🙏\n\n" +
+    "இனிய வைகுண்ட ஏகாதசி நல்வாழ்த்துக்கள்!\n\n" +
+    "ஸ்ரீதேவி பூதேவி சமேத வைகுண்டநாதனை தரிசியுங்கள்.\n\n" +
+    "வாழ்த்துகளுடன் அன்புடன்,\n" +
+    name + "\n\n" +
+    "இந்த இணைப்பைத் திறந்து வைகுண்ட நாதனை தரிசியுங்கள்:\n" +
     link;
 
-  window.open(
-    "https://wa.me/?text="+encodeURIComponent(message),
-    "_blank"
-  );
-
+  if (navigator.share) {
+    try {
+      await navigator.share({
+        title: "வைகுண்ட ஏகாதசி நல்வாழ்த்துக்கள்",
+        text: message,
+        url: link
+      });
+    } catch (error) {
+      if (error.name !== "AbortError") {
+        alert("பகிர்வதில் சிக்கல் ஏற்பட்டது.");
+      }
+    }
+  } else {
+    prompt("இந்த வாழ்த்து செய்தியை Copy செய்து பகிருங்கள்", message);
+  }
 }
 
 /* COPY LINK */
