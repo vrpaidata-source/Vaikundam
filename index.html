@@ -78,30 +78,28 @@ h1 {
 
 #musicButton {
   position:fixed;
-  top:calc(env(safe-area-inset-top) + 9px);
+  top:12px;
   right:10px;
   z-index:100;
-  padding:9px 13px;
+  padding:9px 12px;
   font-size:12px;
-  margin:0;
-  border-radius:25px;
 }
 
 /* GATE SCENE */
 
 .gate-area {
   position:relative;
-  width:min(100%,420px);
-  height:min(53svh,430px);
-  min-height:250px;
-  flex-shrink:1;
-  margin:12px auto 5px;
+  width:min(94vw,500px);
+  height:min(64svh,680px);
+  min-height:350px;
+  margin:18px auto 8px;
   perspective:1200px;
   overflow:hidden;
   border:8px ridge #dba53e;
   border-radius:180px 180px 8px 8px;
-  box-shadow:0 0 25px #ffbd4d;
+  box-shadow:0 0 30px #ffbd4d;
   background:#160a03;
+  flex-shrink:0;
 }
 
 /* INNER SCENE */
