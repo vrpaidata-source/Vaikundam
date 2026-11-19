@@ -10,7 +10,9 @@
 
 <meta property="og:title" content="இனிய வைகுண்ட ஏகாதசி நல்வாழ்த்துக்கள்">
 <meta property="og:description" content="ஓம் நமோ நாராயணாய. வைகுண்ட நாதனை தரிசியுங்கள்.">
-<meta property="og:image" content="og-vaikunta.jpg">
+<meta property="og:image" content="https://vrpaidata-source.github.io/Vaikundam/og-vaikunta.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:type" content="website">
 
 <style>
@@ -836,7 +838,7 @@ function createGreeting() {
 
 /* WHATSAPP SHARE */
 
-async function shareGreeting() {
+ async function shareGreeting() {
 
   const name = document.getElementById("sender").value.trim();
   const link = window.location.href;
@@ -853,16 +855,16 @@ async function shareGreeting() {
   if (navigator.share) {
     try {
       await navigator.share({
-        title: "வைகுண்ட ஏகாதசி நல்வாழ்த்துக்கள்",
-        text: message,
-        url: link
+        title: "இனிய வைகுண்ட ஏகாதசி நல்வாழ்த்துக்கள்",
+        text: message
       });
     } catch (error) {
       if (error.name !== "AbortError") {
         alert("பகிர்வதில் சிக்கல் ஏற்பட்டது.");
       }
     }
-  } else {
+  }
+} else {
     prompt("இந்த வாழ்த்து செய்தியை Copy செய்து பகிருங்கள்", message);
   }
 }
